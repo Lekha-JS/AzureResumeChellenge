@@ -18,14 +18,12 @@ jobs:
     - uses: azure/login@v1
       with:
           creds: ${{ secrets.LJS_AZURE_RESUME }}
-
 - name: Upload to blob storage
       uses: azure/CLI@v1
       with:
         azcliversion: 2.0.72
         inlineScript: |
-            az storage blob upload-batch --account-name ljsstore01 -d '$web' -s .
-            
+            az storage blob upload-batch --account-name ljsstore01 -d '$web' -s .            
 - name: Purge CDN endpoint
       uses: azure/CLI@v1
       with:
